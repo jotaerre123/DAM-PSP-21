@@ -1,4 +1,4 @@
-package com.salesianostriana.dam._Monumentos;
+package com.salesianostrina.dam._Monumentos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

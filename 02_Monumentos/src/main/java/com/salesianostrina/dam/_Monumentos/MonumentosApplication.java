@@ -1,4 +1,4 @@
-package com.salesianostriana.dam._Monumentos;
+package com.salesianostrina.dam._Monumentos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
