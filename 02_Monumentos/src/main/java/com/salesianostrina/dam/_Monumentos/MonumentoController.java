@@ -95,6 +95,7 @@ public class MonumentoController {
     //Eliminar un monumento
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
+                        // ?: podría ser cualquier dato, ya que no le importa porque va a borrarlo
         repository.deleteById(id);
         return  ResponseEntity.noContent().build();
     }
