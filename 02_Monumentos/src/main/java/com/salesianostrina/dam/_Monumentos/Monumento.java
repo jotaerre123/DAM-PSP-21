@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 @Data@NoArgsConstructor@AllArgsConstructor
@@ -28,6 +29,9 @@ public class Monumento {
 
     private String name;
 
+    //@Lob (large object) convierte en grande un objeto, se pone sobre el String descripcion
+    //@Column(length=1000)
+    @Lob
     private String description;
 
     private String image;

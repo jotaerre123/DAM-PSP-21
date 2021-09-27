@@ -31,9 +31,12 @@ public class MonumentoController {
     //Crear un monumento nuevo
     @PostMapping("/")
     public ResponseEntity<Monumento> create(@RequestBody Monumento monumento){
+                                            //requestbody es el cuerpo del mensaje asociado al parametro pedido
+        //Si el tipo es de la clase modelo, siempre saldra el codigo 200
+
 
         return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(monumento));
-    }
+    }                      //.status(201)
 
     //Modificar un monumento
     @PutMapping("/{id}")
