@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "a92517a9-ce19-454c-9c5d-8599b4183418",
+		"name": "02_Monumentos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Nuevo Monumento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/monumento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todos Monumentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/monumento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Solo 1 monumento",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/monumento/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Monumento",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}

@@ -18,15 +18,28 @@ public class MonumentoController {
 
     //Listar todos los monumentos
     @GetMapping("/")
-    public List<Monumento> findAll(){
-        return repository.findAll();
+    public ResponseEntity<List<Monumento>> findAll(){
+        return ResponseEntity.ok().body(repository.findAll());
     }
+
+
+    /*public List<Monumento> findAll(){
+        return repository.findAll();
+    }*/
+
+
 
     //Listar un monumento por su id
     @GetMapping("/{id}")
-    public Monumento findOne(@PathVariable("id") Long id){
-        return repository.findById(id).orElse(null);
+    public ResponseEntity<Monumento> findOne(@PathVariable("id") Long id /* este nombre puede ser cualquier cosa si se pone el pathvariable con ("id")*/){
+
+        return ResponseEntity.of(repository.findById(id));
+
     }
+
+    /*public Monumento findOne(@PathVariable("id") Long id){
+        return repository.findById(id).orElse(null);
+    }*/
 
     //Crear un monumento nuevo
     @PostMapping("/")
@@ -40,7 +53,29 @@ public class MonumentoController {
 
     //Modificar un monumento
     @PutMapping("/{id}")
-    public Monumento edit(@RequestBody Monumento monumento, @PathVariable Long id){
+    public ResponseEntity<Monumento> edit(@RequestBody Monumento monumento, @PathVariable Long id){
+
+        return ResponseEntity.of(
+
+        repository.findById(id).map(m -> {
+
+
+            m.setCodeISO(monumento.getCodeISO());
+            m.setNameCountry(monumento.getNameCountry());
+            m.setNameCity(monumento.getNameCity());
+            m.setLatitude(monumento.getLatitude());
+            m.setLongitude(monumento.getLongitude());
+            m.setName(monumento.getName());
+            m.setDescription(monumento.getDescription());
+            m.setImage(monumento.getImage());
+            repository.save(m);
+            return m;
+        })
+
+        );
+    }
+
+    /*public Monumento edit(@RequestBody Monumento monumento, @PathVariable Long id){
 
         Monumento old = repository.findById(id).orElse(monumento);
 
@@ -55,7 +90,7 @@ public class MonumentoController {
 
         return repository.save(old);
 
-    }
+    }*/
 
     //Eliminar un monumento
     @DeleteMapping("/{id}")
