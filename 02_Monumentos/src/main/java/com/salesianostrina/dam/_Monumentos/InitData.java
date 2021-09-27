@@ -12,6 +12,7 @@ public class InitData {
 
     private final MonumentoRepository repository;
 
+   //InitData no es necesario ya que se pueden introducir datos a través de Postman
 
     @PostConstruct
     public void init(){
