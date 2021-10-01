@@ -1,5 +1,10 @@
 package com.salesianostrina.dam._Monumentos;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +35,16 @@ public class MonumentoController {
 
 
     //Listar un monumento por su id
+    @Operation(summary = "Obtiene el monumento elegido en base a su ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+            description = "Se ha encontrado el monumento",
+            content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = Monumento.class))})
+    })
+    @ApiResponse(responseCode = "400",
+    description = "No se ha encontrado",
+    content = @Content)
     @GetMapping("/{id}")
     public ResponseEntity<Monumento> findOne(@PathVariable("id") Long id /* este nombre puede ser cualquier cosa si se pone el pathvariable con ("id")*/){
 
