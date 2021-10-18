@@ -2,6 +2,7 @@ package com.salesianostriana.dam.ejemplo05;
 
 import com.salesianostriana.dam.ejemplo05.model.Alumno;
 import com.salesianostriana.dam.ejemplo05.repos.AlumnoRepository;
+import com.salesianostriana.dam.ejemplo05.service.AlumnoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import javax.annotation.PostConstruct;
 public class MainPrueba {
 
 
-    private final AlumnoRepository repository;
+    private final AlumnoService service;
 
 
 
@@ -23,10 +24,10 @@ public class MainPrueba {
                 .apellidos("jimndedfuvñc")
                 .email("dovhnñjvnz@")
                 .build();
-        repository.save(alumno);
+        service.save(alumno);
 
-        repository.findAll()
-                .forEach(System.out::println);
+        service.findAll()
+                .forEach(a -> System.out.printf("%s %s\n", a.getNombre(), a.getApellidos()));
 
     }
 

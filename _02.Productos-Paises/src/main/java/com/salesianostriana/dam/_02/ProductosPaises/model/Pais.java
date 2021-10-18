@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.UUID;
+
 
 @Entity
 @AllArgsConstructor
@@ -15,14 +15,12 @@ import java.util.UUID;
 public class Pais implements Serializable {
 
     @Id
-    private UUID id;
+    private int id;
 
 
-    @Column(name = "name", nullable = true)
+    @Column(name = "name", nullable = false, length = 128)
     private String nombre;
 
 
-    public Pais(){
-        id = UUID.randomUUID();
-    }
+
 }
