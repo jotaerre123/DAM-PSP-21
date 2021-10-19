@@ -3,9 +3,7 @@ package com.salesianostriana.dam.ejemplo05.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -22,6 +20,20 @@ public  class Alumno implements Serializable {
 
     private String nombre, apellidos , email;
 
+    @ManyToOne
+    //@JoinColumn(name = "curso", foreignKey = @ForeignKey(name = "FK_ALUMNO_CURSO"))
+    private Curso curso;
+
+    public void addCurso(Curso c){
+        this.curso = c;
+        c.getAlumnos().add(this);
+    }
+
+    public void removeCurso(Curso c){
+
+        c.getAlumnos().remove(this);
+        this.curso=null;
+    }
 
 
 
