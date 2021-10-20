@@ -5,13 +5,14 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//@Getter @Setter @EqualsAndHashCode
-@Data
+@Getter @Setter @EqualsAndHashCode
 public  class Alumno implements Serializable {
 
     @Id
@@ -23,6 +24,14 @@ public  class Alumno implements Serializable {
     @ManyToOne
     //@JoinColumn(name = "curso", foreignKey = @ForeignKey(name = "FK_ALUMNO_CURSO"))
     private Curso curso;
+
+    @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name = "alumno_id", foreignKey = @ForeignKey(name="FK_MATRICULA_ALUMNO")),
+            inverseJoinColumns = @JoinColumn(name = "asignatura_id", foreignKey = @ForeignKey(name="FK_MATRICULA_ASIGNATURA")),
+            name = "matriculaciones"
+    )
+    private List<Asignatura> asignaturas = new ArrayList<>();
+
 
     public void addCurso(Curso c){
         this.curso = c;
