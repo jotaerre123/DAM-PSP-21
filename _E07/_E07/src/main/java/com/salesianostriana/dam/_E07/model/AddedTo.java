@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AddedTo implements Serializable {
+public class AddedTo {
 
     @Builder.Default
     @EmbeddedId
@@ -31,6 +31,45 @@ public class AddedTo implements Serializable {
 
     private LocalDateTime datetime;
 
-    private int order;
+    //Sale error si se pone order
+    private int orden;
+
+
+
+    public void addSong(Song s){
+       this.song = s;
+
+        s.getAddedTo2().add(this);
+    }
+
+    public void removeSong(Song s){
+        this.song = s;
+        s.getAddedTo2().remove(this);
+    }
+
+    public void addPlaylist(Playlist p){
+        this.playlist = p;
+
+        p.getAddedTo().add(this);
+    }
+
+    public void removePlaylist(Playlist p){
+        this.playlist = p;
+
+        p.getAddedTo().remove(this);
+    }
+
+    public void addSongPLaylist(Song s, Playlist p){
+        addSong(s);
+
+        addPlaylist(p);
+
+    }
+
+    public void removeSongPlaylist(Song s, Playlist p){
+        removeSong(s);
+        removePlaylist(p);
+    }
+
 
 }

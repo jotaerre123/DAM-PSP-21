@@ -1,5 +1,6 @@
 package com.salesianostriana.dam._E07;
 
+import com.salesianostriana.dam._E07.model.AddedTo;
 import com.salesianostriana.dam._E07.model.Artist;
 import com.salesianostriana.dam._E07.model.Playlist;
 import com.salesianostriana.dam._E07.model.Song;
@@ -12,6 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 @Component
 @RequiredArgsConstructor
@@ -23,7 +27,7 @@ public class MainDePrueba {
     private final AddedToService addedToService;
 
     @PostConstruct
-    public void init(){
+    public void test(){
 
         Artist artist = Artist.builder()
                 .name("LiSa")
@@ -33,28 +37,32 @@ public class MainDePrueba {
 
         Song song = Song.builder()
                 .title("Gurenge")
-                .artist(artist)
+                .album("Op")
+                .year("2020")
                 .build();
-
-        songService.save(song);
 
         song.addArtist(artist);
 
+        songService.save(song);
+
         Playlist playlist = Playlist.builder()
                 .name("Favoritos")
+                .description("Todas las canciones favoritas de JRWTF")
                 .build();
 
         playlistService.save(playlist);
 
-        playlist.addSong(song);
+        AddedTo addedTo = AddedTo.builder()
+                .datetime(LocalDateTime.of(2020, 3, 5, 6, 30))
+                .build();
 
-        playlistService.edit(playlist);
 
-        System.out.println("Título Canción" + playlist.getSongList().get(0).getTitle());
 
-        System.out.println("Artista Canción" + playlist.getSongList().get(0).getArtist().getName());
+        System.out.println("Título Canción: " + song.getTitle());
 
-        System.out.println("Nombre de la Playlist" + playlist.getName());
+        System.out.println("Artista Canción: " + artist.getName());
+
+        System.out.println("Nombre de la Playlist: " + playlist.getName());
 
     }
 

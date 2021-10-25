@@ -4,6 +4,7 @@ package com.salesianostriana.dam._E07.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class Song {
+public class Song implements Serializable {
 
     @Id
     @GeneratedValue
@@ -30,13 +31,22 @@ public class Song {
     private String year;
 
     @Builder.Default
-    @ManyToMany(mappedBy = "listSongs", fetch = FetchType.EAGER)
-    private List<Playlist> playlist = new ArrayList<>();
+    @OneToMany(mappedBy = "song")
+    private List<AddedTo> addedTo2 = new ArrayList<>();
 
     public void addArtist(Artist a){
         this.artist = a;
-        a.getSongs().add(this);
+        if (a.getSongs() == null){
+            a.setSongs(new ArrayList<>());
+            a.getSongs().add(this);
+        }
+
+    }
+
+    public void removeArtist(Artist a){
         this.artist = null;
+
+        a.getSongs().remove(this);
     }
 
 }
