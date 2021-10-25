@@ -3,6 +3,8 @@ package com.salesianostriana.dam._E07.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -10,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AddedTo {
+public class AddedTo implements Serializable {
 
     @Builder.Default
     @EmbeddedId
@@ -27,6 +29,8 @@ public class AddedTo {
     @JoinColumn(name="playlist_id")
     private Playlist playlist;
 
+    private LocalDateTime datetime;
 
+    private int order;
 
 }

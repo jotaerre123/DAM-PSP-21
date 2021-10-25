@@ -6,21 +6,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 
 @Embeddable
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddedToPK {
+public class AddedToPK implements Serializable {
 
     private Long song_id;
 
     private Long playlist_id;
 
-    private Date datetime;
 
-    private int order;
 
 }
