@@ -1,0 +1,4 @@
+2021-10-26 20:51:48 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM ADDED_TO ARTIST PLAYLIST[*]"
+Syntax error in SQL statement "SELECT * FROM ADDED_TO ARTIST PLAYLIST[*]"; SQL statement:
+SELECT * FROM ADDED_TO ARTIST PLAYLIST [42000-200]

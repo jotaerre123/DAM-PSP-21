@@ -1,6 +1,8 @@
 package com.salesianostriana.dam._E07.model;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EntityListeners(AuditingEntityListener.class)
 public class AddedTo {
 
     @Builder.Default
@@ -29,6 +32,7 @@ public class AddedTo {
     @JoinColumn(name="playlist_id")
     private Playlist playlist;
 
+    @CreatedDate
     private LocalDateTime datetime;
 
     //Sale error si se pone order

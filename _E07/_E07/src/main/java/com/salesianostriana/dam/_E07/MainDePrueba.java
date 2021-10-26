@@ -52,9 +52,13 @@ public class MainDePrueba {
 
         playlistService.save(playlist);
 
-        AddedTo addedTo = AddedTo.builder()
-                .datetime(LocalDateTime.of(2020, 3, 5, 6, 30))
-                .build();
+
+
+
+        addedToService.createAddedTo(playlist, song, playlistService, songService);
+
+
+
 
 
 
