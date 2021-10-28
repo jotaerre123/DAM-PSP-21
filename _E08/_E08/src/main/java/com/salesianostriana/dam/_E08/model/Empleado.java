@@ -3,10 +3,9 @@ package com.salesianostriana.dam._E08.model;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +14,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Empleado {
+@NamedEntityGraph(
+        name = Empleado.EMPLEADO_CLIENTE_CORP,
+        attributeNodes = {
+                @NamedAttributeNode("clienteCorporativos")
+        }
+)
+public class Empleado implements Serializable {
+
+
+    public static final String EMPLEADO_CLIENTE_CORP = "grafo-empleado-clienteCorporativos";
 
     @Id
     @GeneratedValue
@@ -31,7 +39,8 @@ public class Empleado {
 
 
     //Usamos asociación bidireccional para poder usar las entidades derivadas
+    
     @OneToMany(mappedBy = "empleado")
-    private List<ClienteCorporativo> clienteCorporativos;
+    private List<ClienteCorporativo> clienteCorporativos = new ArrayList<>();
 
 }

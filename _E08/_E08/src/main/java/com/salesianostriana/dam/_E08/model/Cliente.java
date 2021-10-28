@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -18,21 +16,29 @@ import java.util.List;
 @Entity
 @Getter@Setter
 @AllArgsConstructor@NoArgsConstructor@SuperBuilder
-public class Cliente {
+@DiscriminatorValue("C")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NamedEntityGraph(name = "grafo-cliente-pedidos",
+attributeNodes = {
+        @NamedAttributeNode("pedidos")
+})
+public class Cliente implements Serializable {
+
+    public static final String CLIENTE_PEDIDIO = "grafo-cliente-pedido";
 
     @Id
     @GeneratedValue
-    private Long id;
+    protected Long id;
 
-    private String nombre;
+    protected String nombre;
 
-    private String apellidos;
+    protected String apellidos;
 
     private String mail;
 
     //Usamos asociación bidireccional para poder usar las entidades derivadas
     @OneToMany(mappedBy = "cliente")
-    private List<Pedido> pedidos;
+    protected List<Pedido> pedidos;
 
 
 

@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @SuperBuilder
 @EntityListeners(AuditingEntityListener.class)
-public class Pedido {
+public class Pedido implements Serializable {
 
     @Id
     @GeneratedValue
@@ -33,8 +34,13 @@ public class Pedido {
 
     private String transporte;
 
+    @Enumerated(EnumType.STRING)
+    private EstadoPedido estado;
+
     @ManyToOne
     private Cliente cliente;
+
+    // Helpers Pedido - Cliente
 
     public void addCliente(Cliente c){
         this.cliente = c;
@@ -45,8 +51,7 @@ public class Pedido {
     }
 
     public void removeCliente(Cliente c){
-        this.cliente = null;
-
         c.getPedidos().remove(this);
+        this.cliente = null;
     }
 }

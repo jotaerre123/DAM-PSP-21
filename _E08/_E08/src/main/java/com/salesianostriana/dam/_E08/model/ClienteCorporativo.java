@@ -6,16 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @SuperBuilder
+@DiscriminatorValue("CC")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ClienteCorporativo extends Cliente{
 
     private double capitalEmpresa;
@@ -33,8 +33,9 @@ public class ClienteCorporativo extends Cliente{
     }
 
     public void removeEmpleado(Empleado e){
-        this.empleado = null;
+
         e.getClienteCorporativos().remove(this);
+        this.empleado = null;
     }
 
 }
