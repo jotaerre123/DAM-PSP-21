@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.realestate.users.model;
 
 import lombok.*;
+import org.hibernate.annotations.NaturalId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,28 +27,33 @@ public class UserEntity implements UserDetails{
     private Long id;
 
     @Column(unique = true)
-    private String username;
+    private String nombre;
 
-    private String password;
+    private String apellidos;
+
+    private String direccion;
+
+    @NaturalId
+    @Column(unique = true, updatable = false)
+    private String email;
+
+    private String telefono;
 
     private String avatar;
+
+    private String password;
 
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<UserRole> roles;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @Builder.Default
-    private LocalDateTime lastPasswordChangeAt = LocalDateTime.now();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles
                 .stream()
-                .map(ur -> new SimpleGrantedAuthority("ROLE_" + ur.name()))
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
                 .collect(Collectors.toList());
     }
 
@@ -58,22 +64,22 @@ public class UserEntity implements UserDetails{
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
