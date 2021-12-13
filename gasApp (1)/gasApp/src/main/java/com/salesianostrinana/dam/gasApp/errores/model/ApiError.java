@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@NoArgsConstructor@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class ApiError {
 
@@ -21,6 +22,8 @@ public class ApiError {
     private String mensaje;
     private String ruta;
 
+
+
     @Builder.Default
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
     private LocalDateTime fecha = LocalDateTime.now();
@@ -28,20 +31,16 @@ public class ApiError {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<ApiSubError> subErrores;
 
-    public ApiError(HttpStatus estado, int codigo, String mensaje, String ruta, LocalDateTime fecha) {
+    public ApiError(HttpStatus estado, String mensaje, String ruta) {
         this.estado = estado;
-        this.codigo = codigo;
+        this.codigo = estado.value();
         this.mensaje = mensaje;
+        this.fecha = LocalDateTime.now();
         this.ruta = ruta;
-        this.fecha = fecha;
     }
 
-    public ApiError(HttpStatus estado, int codigo, String mensaje, String ruta, LocalDateTime fecha, List<ApiSubError> subErrores) {
-        this.estado = estado;
-        this.codigo = codigo;
-        this.mensaje = mensaje;
-        this.ruta = ruta;
-        this.fecha = fecha;
+    public ApiError(HttpStatus estado, String mensaje, String ruta, List<ApiSubError> subErrores) {
+        this(estado, mensaje, ruta);
         this.subErrores = subErrores;
     }
 }

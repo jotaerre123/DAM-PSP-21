@@ -24,47 +24,42 @@ public class Estacion {
     @GeneratedValue
     private Long id;
 
-    @NotNull(message = "{estacion.nombre.null}")
-    @NotBlank(message = "{estacion.nombre.blank}")
     private String nombre;
 
 
     private String marca;
 
-    @NotNull(message = "{estacion.ubicacion.null}")
-    @NotBlank(message = "{estacion.ubicacion.blank}")
     private String ubicacion;
 
 
     private boolean tieneAutolavado;
 
-    @Min(value = 0, message = "{estacion.precioGasoilNormal.min}")
-    @Positive
+
     private double precioGasoilNormal;
 
-    @Min(value = 0, message = "{estacion.precioGasolina95Octanos.min}")
-    @Positive
+
     private double precioGasolina95Octanos;
 
-    @Min(value = 0, message = "{estacion.precioGasoilEspecial.min}")
-    @Positive
     private double precioGasoilEspecial;
 
-    @Min(value = 0, message = "{estacion.precioGasolina98.min}")
-    @Positive
     private double precioGasolina98;
 
     @Lob
     private String servicios;
 
-    @Past
     private LocalDateTime fechaApertura;
 
 
-
-
-
-
-
-
+    public Estacion(String nombre, String marca, String ubicacion, boolean tieneAutolavado, double precioGasoilNormal, double precioGasolina95Octanos, double precioGasoilEspecial, double precioGasolina98, String servicios, LocalDateTime fechaApertura) {
+        this.nombre = nombre;
+        this.marca = marca;
+        this.ubicacion = ubicacion;
+        this.tieneAutolavado = tieneAutolavado;
+        this.precioGasoilNormal = precioGasoilNormal;
+        this.precioGasolina95Octanos = precioGasolina95Octanos;
+        this.precioGasoilEspecial = precioGasoilEspecial;
+        this.precioGasolina98 = precioGasolina98;
+        this.servicios = servicios;
+        this.fechaApertura = fechaApertura;
+    }
 }

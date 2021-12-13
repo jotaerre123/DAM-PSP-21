@@ -1,5 +1,7 @@
 package com.salesianostrinana.dam.gasApp.services;
 
+import com.salesianostrinana.dam.gasApp.dto.CreateEstacionDto;
+import com.salesianostrinana.dam.gasApp.dto.EstacionDtoConverter;
 import com.salesianostrinana.dam.gasApp.errores.excepciones.ListEntityNotFoundException;
 import com.salesianostrinana.dam.gasApp.errores.excepciones.SingleEntityNotFoundException;
 import com.salesianostrinana.dam.gasApp.model.Estacion;
@@ -16,6 +18,7 @@ import java.util.List;
 public class EstacionService {
 
     private final EstacionRepository estacionRepository;
+    private final EstacionDtoConverter estacionDtoConverter;
 
     public ResponseEntity<List<Estacion>> findAll(){
         List<Estacion> result = estacionRepository.findAll();
@@ -29,18 +32,29 @@ public class EstacionService {
 
     public ResponseEntity<Estacion> findById(Long id){
 
-        return ResponseEntity.ok(estacionRepository.findById(id)
-                .orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), Estacion.class)));
+        if (estacionRepository.findById(id).isEmpty()){
+            return ResponseEntity.notFound().build();
+        }else{
+            return ResponseEntity.ok(estacionRepository.findById(id)
+                    .orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), Estacion.class)));
+        }
+
     }
 
-    public ResponseEntity<Estacion> save(Estacion estacion){
+    public ResponseEntity<Estacion> save(CreateEstacionDto estacion){
 
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(estacionRepository.save(estacion));
+
+            Estacion nueva = estacionDtoConverter.createEstacionDtoToEstacion(estacion);
+
+
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(estacionRepository.save(nueva));
+
+
     }
 
-    public ResponseEntity<Estacion> edit(Long id, Estacion e){
+    public ResponseEntity<Estacion> edit(Long id, CreateEstacionDto e){
        return ResponseEntity.of(estacionRepository.findById(id).map(
                 m ->{
                     m.setNombre(e.getNombre());
@@ -60,6 +74,11 @@ public class EstacionService {
        );
 
 
+    }
+
+    public ResponseEntity<?> delete(Long id){
+        estacionRepository.deleteById(id);
+        return ResponseEntity.status(204).build();
     }
 
 
