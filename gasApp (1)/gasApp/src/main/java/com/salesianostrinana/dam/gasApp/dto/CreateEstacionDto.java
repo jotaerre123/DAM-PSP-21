@@ -1,6 +1,8 @@
 package com.salesianostrinana.dam.gasApp.dto;
 
+import com.salesianostrinana.dam.gasApp.validacion.anotaciones.DateComparison;
 import com.salesianostrinana.dam.gasApp.validacion.anotaciones.LocationValueMatch;
+import com.salesianostrinana.dam.gasApp.validacion.anotaciones.UniqueName;
 import lombok.*;
 
 import javax.persistence.Lob;
@@ -18,12 +20,18 @@ import java.time.LocalDateTime;
                 message = "{estacion.ubicacion.pattern}"
         )
 })
+@DateComparison(
+        fechaApertura = "fechaApertura",
+        fechaRegistro = "fechaRegistro",
+        message = "{estacion.fecha.comparison}"
+)
 public class CreateEstacionDto {
 
     private Long id;
 
 
     @NotBlank(message = "{estacion.nombre.blank}")
+    @UniqueName(message = "{estacion.nombre.unico}")
     private String nombre;
 
 
@@ -58,7 +66,7 @@ public class CreateEstacionDto {
     @Past
     private LocalDateTime fechaApertura;
 
-    private LocalDateTime fechaRegistro;
+    private LocalDateTime fechaRegistro= LocalDateTime.now();
 
 
 
