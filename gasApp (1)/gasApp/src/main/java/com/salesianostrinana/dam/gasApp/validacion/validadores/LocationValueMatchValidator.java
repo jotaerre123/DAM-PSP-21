@@ -19,12 +19,14 @@ public class LocationValueMatchValidator implements ConstraintValidator<Location
 
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
-        Object fieldValue = PropertyAccessorFactory.forBeanPropertyAccess(o).getPropertyValue(ubicacion);
+        Object fieldValue =PropertyAccessorFactory.forBeanPropertyAccess(o).getPropertyValue(ubicacion);
 
         if (fieldValue != null){
-            return Pattern.matches("^([-+]?\\d{1,2}[.]\\d+),\\s*([-+]?\\d{1,3}[.]\\d+)$\n",ubicacion);
-        }
+            return Pattern.matches("^([-+]?\\d{1,2}[.]\\d+),\\s*([-+]?\\d{1,3}[.]\\d+)$", (CharSequence) fieldValue);
+        } else {
 
-        return false;
+            return fieldValue == null;
+
+        }
     }
 }

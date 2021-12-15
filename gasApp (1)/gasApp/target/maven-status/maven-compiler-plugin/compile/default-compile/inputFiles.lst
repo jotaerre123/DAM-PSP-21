@@ -6,6 +6,8 @@ C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\m
 C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\main\java\com\salesianostrinana\dam\gasApp\errores\excepciones\ListEntityNotFoundException.java
 C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\main\java\com\salesianostrinana\dam\gasApp\errores\excepciones\EntityNotFoundException.java
 C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\main\java\com\salesianostrinana\dam\gasApp\errores\excepciones\SingleEntityNotFoundException.java
+C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\main\java\com\salesianostrinana\dam\gasApp\validacion\validadores\LocationValueMatchValidator.java
+C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\main\java\com\salesianostrinana\dam\gasApp\validacion\anotaciones\LocationValueMatch.java
 C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\main\java\com\salesianostrinana\dam\gasApp\services\EstacionService.java
 C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\main\java\com\salesianostrinana\dam\gasApp\controller\EstacionController.java
 C:\Users\jimenez.rijai21\Desktop\Repositorios\DAM-PSP-21\gasApp (1)\gasApp\src\main\java\com\salesianostrinana\dam\gasApp\errores\model\ApiSubError.java

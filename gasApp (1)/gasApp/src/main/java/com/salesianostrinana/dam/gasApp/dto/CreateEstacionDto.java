@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @LocationValueMatch.List({
         @LocationValueMatch(
                 ubicacion = "ubicacion",
-                message = "malardo"
+                message = "{estacion.ubicacion.pattern}"
         )
 })
 public class CreateEstacionDto {
