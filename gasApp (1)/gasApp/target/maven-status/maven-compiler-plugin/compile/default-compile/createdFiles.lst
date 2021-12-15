@@ -1,3 +1,4 @@
+com\salesianostrinana\dam\gasApp\validacion\anotaciones\LocationValueMatch$List.class
 com\salesianostrinana\dam\gasApp\errores\excepciones\SingleEntityNotFoundException.class
 com\salesianostrinana\dam\gasApp\errores\GlobalRestControllerAdvice.class
 com\salesianostrinana\dam\gasApp\errores\model\ApiSubError.class
@@ -7,6 +8,7 @@ com\salesianostrinana\dam\gasApp\controller\EstacionController.class
 com\salesianostrinana\dam\gasApp\errores\config\ConfiguracionValidacion.class
 com\salesianostrinana\dam\gasApp\errores\model\ApiValidationSubError$ApiValidationSubErrorBuilder.class
 com\salesianostrinana\dam\gasApp\errores\excepciones\ListEntityNotFoundException.class
+com\salesianostrinana\dam\gasApp\validacion\anotaciones\LocationValueMatch.class
 com\salesianostrinana\dam\gasApp\errores\model\ApiError$ApiErrorBuilder.class
 com\salesianostrinana\dam\gasApp\dto\CreateEstacionDto.class
 com\salesianostrinana\dam\gasApp\dto\EstacionDtoConverter.class
@@ -17,3 +19,4 @@ com\salesianostrinana\dam\gasApp\dto\CreateEstacionDto$CreateEstacionDtoBuilder.
 com\salesianostrinana\dam\gasApp\GasAppApplication.class
 com\salesianostrinana\dam\gasApp\model\Estacion.class
 com\salesianostrinana\dam\gasApp\errores\model\ApiError.class
+com\salesianostrinana\dam\gasApp\validacion\validadores\LocationValueMatchValidator.class

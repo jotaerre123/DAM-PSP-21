@@ -1,5 +1,6 @@
 package com.salesianostrinana.dam.gasApp.dto;
 
+import com.salesianostrinana.dam.gasApp.validacion.anotaciones.LocationValueMatch;
 import lombok.*;
 
 import javax.persistence.Lob;
@@ -11,6 +12,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@LocationValueMatch.List({
+        @LocationValueMatch(
+                ubicacion = "ubicacion",
+                message = "malardo"
+        )
+})
 public class CreateEstacionDto {
 
     private Long id;
@@ -50,6 +57,8 @@ public class CreateEstacionDto {
 
     @Past
     private LocalDateTime fechaApertura;
+
+    private LocalDateTime fechaRegistro;
 
 
 

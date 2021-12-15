@@ -49,6 +49,8 @@ public class Estacion {
 
     private LocalDateTime fechaApertura;
 
+    private LocalDateTime fechaRegistro;
+
 
     public Estacion(String nombre, String marca, String ubicacion, boolean tieneAutolavado, double precioGasoilNormal, double precioGasolina95Octanos, double precioGasoilEspecial, double precioGasolina98, String servicios, LocalDateTime fechaApertura) {
         this.nombre = nombre;
@@ -62,4 +64,19 @@ public class Estacion {
         this.servicios = servicios;
         this.fechaApertura = fechaApertura;
     }
+
+    public Estacion(String nombre, String marca, String ubicacion, boolean tieneAutolavado, double precioGasoilNormal, double precioGasolina95Octanos, double precioGasoilEspecial, double precioGasolina98, String servicios, LocalDateTime fechaApertura, LocalDateTime fechaRegistro) {
+        this.nombre = nombre;
+        this.marca = marca;
+        this.ubicacion = ubicacion;
+        this.tieneAutolavado = tieneAutolavado;
+        this.precioGasoilNormal = precioGasoilNormal;
+        this.precioGasolina95Octanos = precioGasolina95Octanos;
+        this.precioGasoilEspecial = precioGasoilEspecial;
+        this.precioGasolina98 = precioGasolina98;
+        this.servicios = servicios;
+        this.fechaApertura = fechaApertura;
+        this.fechaRegistro = LocalDateTime.now();
+    }
+
 }
