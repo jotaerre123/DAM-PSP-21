@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "90230589-80c4-4138-95df-c5574fa3f768",
+		"name": "Login",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login incorrecto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"JRWTF\",\r\n    \"email\": \"jaime@gmail.com\",\r\n    \"verifyEmail\":\"jaime@gmail.com\",\r\n    \"password\": \"AbCd1234\",\r\n    \"verifyPassword\": \"aBcD1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuario/v2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"v2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login correcto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"JRWTF\",\r\n    \"email\": \"jaime@gmail.com\",\r\n    \"verifyEmail\":\"jaime@gmail.com\",\r\n    \"password\": \"Abcd@12345\",\r\n    \"verifyPassword\": \"Abcd@12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuario/v2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"v2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
